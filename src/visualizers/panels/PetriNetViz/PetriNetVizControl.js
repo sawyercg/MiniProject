@@ -83,31 +83,27 @@ define([
             self._client.updateTerritory(self._territoryId, self._selfPatterns);
         }
         console.log("HERE")
-        runPlugin(self)
+       // runPlugin(self)
     };
 
-    //wont work as a member function for some reason
-    const runPlugin = function(self){
-        var ctx = self._client.getCurrentPluginContext('PetriNetCodeGenerator')
-        self._client.runServerPlugin('PetriNetCodeGenerator', ctx, function(err, msg){
-            console.log(err)
-            console.log(JSON.parse(msg['messages'][0]['message']))
-            var obj = JSON.parse(msg['messages'][0]['message'])
-            self._info = obj
-        })
-    }
 
     // This next function retrieves the relevant node information for the widget
     PetriNetVizControl.prototype._getObjectDescriptor = function (nodeId) {
         var node = this._client.getNode(nodeId),
-            objDescriptor;
+            objDescriptor,
+            meta = this._client.getNode(node.getMetaTypeId())
+        if(meta){
+            meta = meta.getAttribute(nodePropertyNames.Attributes.name)
+        }
         if (node) {
             objDescriptor = {
                 id: node.getId(),
                 name: node.getAttribute(nodePropertyNames.Attributes.name),
                 childrenIds: node.getChildrenIds(),
                 parentId: node.getParentId(),
-                isConnection: GMEConcepts.isConnection(nodeId)
+                isConnection: GMEConcepts.isConnection(nodeId),
+                position: this._client.getNode(nodeId).getRegistry("position"),
+                meta: meta
             };
         }
 
@@ -258,3 +254,4 @@ define([
 
     return PetriNetVizControl;
 });
+

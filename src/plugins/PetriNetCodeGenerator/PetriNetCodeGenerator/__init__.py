@@ -62,12 +62,6 @@ class PetriNetCodeGenerator(PluginBase):
            "Marked Graph": isMarked,
            "Free Choice": isFree,
            "Work Flow": isWorkFlow,
-           "Places": self.places,
-           "Inplaces": self.inPlaces,
-           "Outplaces": self.outPlaces,
-           "Transitions": self.transitions,
-           "Tokens": self.markings
-
         }
         msg = json.dumps(msg)
         logger.info(msg)
