@@ -1,0 +1,8 @@
+[
+  {
+    "id": "PetriNetViz",
+    "title": "PetriNetViz",
+    "panel": "panels/PetriNetViz/PetriNetVizPanel",
+    "DEBUG_ONLY": false
+  }
+]

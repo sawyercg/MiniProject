@@ -1,0 +1,25 @@
+{
+  "components": {
+    "seeds": {},
+    "plugins": {
+      "PetriNetCodeGenerator": {
+        "src": "src/plugins/PetriNetCodeGenerator",
+        "test": "test/plugins/PetriNetCodeGenerator"
+      }
+    },
+    "visualizers": {
+      "PetriNetViz": {
+        "src": "panels/PetriNetViz/PetriNetVizPanel",
+        "title": "PetriNetViz",
+        "panel": "src/visualizers/panels/PetriNetViz",
+        "secondary": false,
+        "widget": "src/visualizers/widgets/PetriNetViz"
+      }
+    }
+  },
+  "dependencies": {
+    "seeds": {},
+    "plugins": {},
+    "visualizers": {}
+  }
+}
